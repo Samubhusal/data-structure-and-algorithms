@@ -1,4 +1,4 @@
-import java.uilt.Scanner;
+import java.util.Stack;
 public class InfixToPostfixConversion{
     private static int getPrecedence(char op){
         switch (op){
@@ -21,13 +21,13 @@ public class InfixToPostfixConversion{
         //1.Create a StringBuilder to build the final postfix expression
         StringBuilder postfixResult=new StringBuilder();
 
-        //2.Create a stack to hold operators and paranthesis
-        Stack<Character> operatorStack =new Stack<>();
+        //2.Create a Stack to hold operators and paranthesis
+         Stack<Character> operatorStack =new  Stack<>();
 
         //3.Loop through every character inthe infix expression 
         for(int i=0 ;i<infixExpression.length();i++){
             char token=infixExpression.charAt(i);
-        }
+        
 
         //Ignore any blank spaces
         if(Character.isWhitespace(token)){
@@ -42,20 +42,20 @@ public class InfixToPostfixConversion{
 
         //Case 2:The token is opening paranthesis
 
-        else if(token=='('){
-            //Push '(' on to the stack.
+        else if (token=='('){
+            //Push '(' on to the Stack.
             operatorStack.push(token);
         }
 
         //Case 3:The token is closing paranthesis')
         else if(token == ')'){
-            //pop operators from the stack and append to the postfix result 
+            //pop operators from the Stack and append to the postfix result 
             // until the matching ')' is found
 
             while(!operatorStack.isEmpty() && operatorStack.peek()!='('){
                 postfixResult.append(operatorStack.pop());
             }
-            //if the stack is empty,discard/remove'('
+            //if the Stack is empty,discard/remove'('
             if(operatorStack.isEmpty() && operatorStack.peek()=='('){
             operatorStack.pop();
             }
@@ -63,7 +63,7 @@ public class InfixToPostfixConversion{
 
         //CASE 4:the token is an operator (+,-,*,/)
         else{
-            //While the stack is not empty AND the top operator has 
+            //While the Stack is not empty AND the top operator has 
             //greater or equal precendence then the current token:
 
             while(!operatorStack.isEmpty()&&
@@ -80,12 +80,32 @@ public class InfixToPostfixConversion{
                 postfixResult.append(operatorStack);
             }
 
-            //Now,push the current operator on to the stack 
+            //Now,push the current operator on to the Stack 
             operatorStack.push(token);
         }
+    }
+
+
+
+
+        //4.After scanning the expression ,POP all the remaining operators from the Stack
+
+        while(!operatorStack.isEmpty()){
+            postfixResult.append(operatorStack.pop());
+        }
+        return postfixResult.toString();
         
     }
+
+    public static void main(String[] args){
+        String infixExpression="A+B*C";
+
+        String postfixResult=convertToPostfix(infixExpression);
+        System.out.println("Infix Expression"+ infixExpression);
+        System.out.println("postfix Expression"+ postfixResult);
+    }
 }
+
 /**
  * Determines the precedence of an operator
  * @param op The operator character
