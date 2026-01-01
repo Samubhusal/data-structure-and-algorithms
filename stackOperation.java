@@ -51,7 +51,7 @@ static void peek(){
 
 //Display operation
 static void displaystack(){
-    if(isEmpt()){
+    if(isEmpty()){
         System.out.println("Stack is empty");
         return;
     }
