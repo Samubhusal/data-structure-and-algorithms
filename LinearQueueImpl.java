@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class LinearQueueImpl {
     static int N=10;//Maximum size or a queue
     static int [] queue=new int[N];
@@ -48,6 +49,17 @@ public class LinearQueueImpl {
         System.out.println(ITEM+"is inserted sucessfullly");
     }
 
+    public static void display(){
+        if(isEmpty()){
+            System.out.println("queue isEmpty");
+            return;
+        }
+         for(int i=F;i<=R;i++){
+         System.out.println(queue[i]+"");
+        }
+        System.out.println();
+    }
+
 
 
     
@@ -72,6 +84,55 @@ public class LinearQueueImpl {
         System.out.println(ITEM+"deleted items from queue");
     }
 
+     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("========STACK MENU=========");
+            System.out.println("1. Is stack empty?");
+            System.out.println("2. Is stack full?");
+            System.out.println("3. ENQUEUE (Insert)");
+            System.out.println("4. DEQUEUE (deleted)");
+            System.out.println("5. Display element");
+            System.out.println("6. Exit");
+
+            int choice = sc.nextInt();
+            int element;
+
+            switch (choice) {
+
+                case 1:
+                    System.out.println(" Queue is empty?: " + isEmpty());
+                    break;
+
+                case 2:
+                    System.out.println(" Queue is full?: " + isFull());
+                    break;
+
+                case 3:
+                    System.out.println("Enter the element to insert:" );
+                    element=sc.nextInt();
+                    enqueue(element);
+                    break;
+
+                case 4:
+                    dequeue();
+                    break;
+
+                case 5:
+                   display();
+                    break;
+
+                case 6:
+                System.out.println("Exiting....");
+                System.exit(0);
+                sc.close();
+                break;
+            
+                default:
+                    System.out.println("Invalid choice. Try again");
+            }
+        }
+    }
 }
 
-//display code
