@@ -115,6 +115,7 @@ public class CircularQueue {
                 case 6:
                     System.out.println("Exiting......");
                     System.exit(0);
+                    sc.close();
                     break;
 
                 default:
