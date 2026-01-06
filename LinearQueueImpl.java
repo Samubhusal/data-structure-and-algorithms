@@ -66,7 +66,7 @@ public class LinearQueueImpl {
     public static void dequeue(){
         //Check if the queue isEmpty
         if(isEmpty()){
-            System.out.println("Overflow:Queue isEmpty");
+            System.out.println("Underflow:Queue isEmpty");
             return;
         }
 
@@ -88,9 +88,9 @@ public class LinearQueueImpl {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
-            System.out.println("========STACK MENU=========");
-            System.out.println("1. Is stack empty?");
-            System.out.println("2. Is stack full?");
+            System.out.println("=======QUEUE MENU=========");
+            System.out.println("1. Is queue empty?");
+            System.out.println("2. Is queue full?");
             System.out.println("3. ENQUEUE (Insert)");
             System.out.println("4. DEQUEUE (deleted)");
             System.out.println("5. Display element");
