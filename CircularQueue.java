@@ -15,6 +15,7 @@ public class CircularQueue {
     public static boolean isEmpty(){
         if(F==-1){
             return true;
+
         }else{
             return false;
         }
@@ -37,8 +38,6 @@ public class CircularQueue {
         queue[R]=ITEM;
         System.out.println(ITEM+"is inserted sucessfully");
     }
-
-// hh
     //DEQUEUE OPERATION
 
     public static void dequeue(){
