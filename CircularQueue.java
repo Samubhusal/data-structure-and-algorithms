@@ -74,7 +74,7 @@ public class CircularQueue {
         }
         System.out.println();
     }
-
+//good girl
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
 
