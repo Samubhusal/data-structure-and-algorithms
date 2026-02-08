@@ -45,7 +45,7 @@ public class Linkedlist{
         Node temp=head;
         System.out.println("list of element:");
         while(temp!=null){
-            System.out.print(temp.data+"");
+            System.out.print(temp.data+" ");
             temp=temp.next;
         }
     }
@@ -107,8 +107,13 @@ public class Linkedlist{
         }
         secondLast.next=null;
         System.out.println("Delete last element");
+        //  Node temp = head;
+        // while (temp.next.next != null) {
+        //     temp = temp.next;
+        // }
+        // temp.next = null;
+        // System.out.println("Deleted last element");
     }
-
     public static void main(String[] args) {
         Linkedlist linkedlist=new Linkedlist();
         Scanner sc = new Scanner(System.in);
