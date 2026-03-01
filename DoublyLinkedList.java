@@ -28,6 +28,8 @@ class DoublyLinkedList {
         head = newNode;
     }
 
+    //Insert from last 
+
     // Display list
     void display() {
         Node temp = head;
