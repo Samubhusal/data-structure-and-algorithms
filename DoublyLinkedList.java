@@ -1,14 +1,13 @@
-
-class DoublyLinkedList {
-    class Node {
+public class DoublyLinkedList {
+    static class Node {
         int data;
         Node prev;
         Node next;
 
         Node(int data) {
             this.data = data;
-            this.prev = null;
-            this.next = null;
+            prev = null;
+            next = null;
         }
     }
 
@@ -18,35 +17,70 @@ class DoublyLinkedList {
     void insertAtBeginning(int value) {
         Node newNode = new Node(value);
 
-        newNode.next = head;
-        newNode.prev = null;
-
         if (head != null) {
             head.prev = newNode;
         }
 
+        newNode.next = head;
         head = newNode;
     }
 
-    //Insert from last 
+    // Insert at end
+    void insertAtEnd(int value) {
+        Node newNode = new Node(value);
 
-    // Display list
-    void display() {
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
         Node temp = head;
-        while (temp != null) {
-            System.out.print(temp.data + "  ");
+
+        while (temp.next != null) {
             temp = temp.next;
         }
-        System.out.println("NULL");
+
+        temp.next = newNode;
+        newNode.prev = temp;
+    }
+
+    // Insert at specific position
+    void insertAtPosition(int value, int pos) {
+        Node newNode = new Node(value);
+
+        if (pos == 1) {
+            insertAtBeginning(value);
+            return;
+        }
+
+        Node temp = head;
+
+        for (int i = 1; i < pos - 1 && temp != null; i++) {
+            temp = temp.next;
+        }
+
+        if (temp == null) {
+            System.out.println("Position not found");
+            return;
+        }
+
+        newNode.next = temp.next;
+        newNode.prev = temp;
+
+        if (temp.next != null) {
+            temp.next.prev = newNode;
+        }
+
+        temp.next = newNode;
     }
 
     public static void main(String[] args) {
+
         DoublyLinkedList list = new DoublyLinkedList();
 
         list.insertAtBeginning(10);
         list.insertAtBeginning(20);
-        list.insertAtBeginning(30);
-
-        list.display();
+        list.insertAtEnd(5);
+        list.insertAtPosition(15, 2);
     }
 }
