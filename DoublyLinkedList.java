@@ -31,6 +31,7 @@ public class DoublyLinkedList {
 
         if (head == null) {
             head = newNode;
+            System.out.println("list is empty");
             return;
         }
 
