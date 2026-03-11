@@ -74,6 +74,103 @@ public class DoublyLinkedList {
 
         temp.next = newNode;
     }
+    // Delete from beginning
+    void deleteFromBeginning() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+
+        head = head.next;
+
+        if (head != null) {
+            head.prev = null;
+        }
+    }
+
+    // Delete from end
+    void deleteFromEnd() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+
+        if (head.next == null) {
+            head = null;
+            return;
+        }
+
+        Node temp = head;
+
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        temp.prev.next = null;
+    }
+
+    // Delete from specific position
+    void deleteAtPosition(int pos) {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+
+        if (pos == 1) {
+            deleteFromBeginning();
+            return;
+        }
+
+        Node temp = head;
+
+        for (int i = 1; i < pos && temp != null; i++) {
+            temp = temp.next;
+        }
+
+        if (temp == null) {
+            System.out.println("Position not found");
+            return;
+        }
+
+        if (temp.next != null) {
+            temp.next.prev = temp.prev;
+        }
+
+        if (temp.prev != null) {
+            temp.prev.next = temp.next;
+        }
+    }
+
+    // Traversal from beginning
+    void traverseForward() {
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+
+        System.out.println("NULL");
+    }
+
+    // Traversal from last node
+    void traverseBackward() {
+        Node temp = head;
+
+        if (temp == null) return;
+
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.prev;
+        }
+
+        System.out.println("NULL");
+    }
+
 
     public static void main(String[] args) {
 
@@ -83,5 +180,17 @@ public class DoublyLinkedList {
         list.insertAtBeginning(20);
         list.insertAtEnd(5);
         list.insertAtPosition(15, 2);
+         System.out.println("Forward Traversal:");
+        list.traverseForward();
+
+        System.out.println("Backward Traversal:");
+        list.traverseBackward();
+
+        list.deleteFromBeginning();
+        list.deleteFromEnd();
+        list.deleteAtPosition(2);
+
+        System.out.println("After Deletions:");
+        list.traverseForward();
     }
 }

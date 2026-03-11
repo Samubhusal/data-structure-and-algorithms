@@ -39,6 +39,4 @@ public class recursion {
         }
     }
 }
-//Application of recursion
-//TOH
 
